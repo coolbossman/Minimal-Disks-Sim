@@ -13,7 +13,7 @@ void Disk::move(double dx, double dy){
 }
 
 double Disk::distance(Disk& other){
-    // returns the distance between the two disks
+    // returns the distance between the two disks boundaries
     double dx = this->x - other.x;
     double dy = this->y - other.y;
     double center_distance = sqrt(dx*dx + dy*dy);

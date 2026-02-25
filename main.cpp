@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <iomanip>
 #include "system.h"
 // HINT: COMPLETE THE INCLUDE STATEMENT
 
@@ -11,9 +13,9 @@
  */
 int main() {
     // number of disks
-    int N = 25;
-    double maxDisplacement  = 0.6;
-    double diskRadius = 0.3;
+    int N = 20;
+    double maxDisplacement = 0.4;
+    double diskRadius = 0.5;
     double L = 20.0;
 
     // initialise the system

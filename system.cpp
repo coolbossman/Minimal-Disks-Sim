@@ -20,14 +20,14 @@ System::System(int N, double displacement,double radius, double boxSize, int see
 
         for (int i = 0; i < nSide && disks.size() < N; ++i) {
             for (int j = 0; j < nSide && disks.size() < N; ++j) {
-                disks.push_back(Disk(i * 4*radius, j * 4*radius, radius));
+                disks.push_back(Disk(radius + i * 4*radius, radius + j * 4*radius, radius));
         }
     }   
 }
 
 bool System::overlap(int i){
     for (int j = 0; j < disks.size(); ++j) {
-        if (i!=j && disks[i].distance(disks[j]) < (disks[i].radius + disks[j].radius) ) {
+        if (i!=j && disks[i].distance(disks[j]) < 0.0 ) {
             return true;
         }
     }
@@ -48,27 +48,25 @@ void System::step() {
         
         enforceBoundaries(disks[selected_disk]);
 
+        // isolating teleporting bug to code or visualisation
         if (overlap(selected_disk)){
             disks[selected_disk].x = oldx;
             disks[selected_disk].y = oldy;
-        }
-
-        // isolating teleporting bug to code or visualisation
-        if (overlap(selected_disk) || ...) {
-        std::cout << "Disk " << selected_disk << " reverted from (" 
+            std::cout << "Disk " << selected_disk << " reverted from (" 
                 << disks[selected_disk].x << "," << disks[selected_disk].y << ")\n";
         disks[selected_disk].x = oldx;
         disks[selected_disk].y = oldy;
         }
     }
 }
+
 void System::enforceBoundaries(Disk & disk) {
     // prevent disks from moving outside the box
-        if (disk.x < 0) disk.x = 0;
-        if (disk.x > boxSize) disk.x = boxSize;
-        if (disk.y < 0) disk.y = 0;
-        if (disk.y > boxSize) disk.y = boxSize;
-    }
+        if ((disk.x - disk.radius) < 0.0) disk.x = disk.radius;
+        if ((disk.x + disk.radius) > boxSize) disk.x = boxSize - disk.radius;
+        if ((disk.y - disk.radius) < 0.0) disk.y = disk.radius;
+        if ((disk.y + disk.radius) > boxSize) disk.y = boxSize - disk.radius;
+}
 
 double System::uniform(double min, double max) {
     // return a uniform number to move the disk to simulate Brownian motion 

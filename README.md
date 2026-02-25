@@ -12,7 +12,9 @@ This was first done for the `system` class in the branch `*system-fix*`, then fo
 
 
 
-However, the codebase failed to produce the expected results; visualising the outputs showed the disks teleporting around, much faster than they should be able to.
+However, the codebase failed to produce the expected results; visualising the outputs showed the disks teleporting around, much faster than they should be able to, along with the disks clipping into the walls. 
+
+Both issues involved the distance checks working off of the disks' centre and not including their radius, but the teleporting was also due to python reading in lexographic order (0, 1, 10, 100 etc) instead of numerical (0, 1, 2 etc) and so was displaying frames out of order.
 
 
 
@@ -24,5 +26,11 @@ readded missing member function from disk.cpp, recreated disk.h from the ref. ma
 
 
 
-compiled and ran, disks were teleporting, altered parameters slightly, bug remained, added debugging code to isolate bug to code or visualisation
+compiled and ran, disks were teleporting, altered parameters slightly, bug remained, added debugging code to isolate bug to code or visualisation, tweaked .gitignore to include .out/.o files, updated progress in README.md
+
+
+
+debugging code showed a code issue, visual inspection showed a doubled radius check. boundary radius checks were added to prevent clipping around the edges. teleporting remained.
+
+
 
