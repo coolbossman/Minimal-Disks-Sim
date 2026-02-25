@@ -1,12 +1,20 @@
 #include <fstream>
+#include "system.h"
+#include "disk.h"
 //HINT: COMPLETE THE INCLUDE STATEMENT
 
 System::System(int N, double displacement,double radius, double boxSize, int seed) {
-
+/** 
+ * Simulates a system with N disks of given radius, placed in a box of given size.
+ * Initially the disks are placed on a grid to prevent overlap, 
+ * and then they are moved randomly in each step, checking for overlaps and boundaries.
+ */
         this->boxSize= boxSize;
         this->  dist = std::uniform_real_distribution<double>(0, 1);
         this->displacement=displacement;
         gen = std::mt19937(seed);
+        // function used here is the Mersenne Twister 
+        // random number generator, chosen for its long period. 
         
         int nSide = static_cast<int>(boxSize/ (2*radius));
 
@@ -27,6 +35,7 @@ bool System::overlap(int i){
 }
 
 void System::step() {
+    // move each disk randomly and check and revert overlaps
     for (size_t i=0; i<disks.size(); ++i) 
     {
         int selected_disk = std::rand() % disks.size();
@@ -46,12 +55,17 @@ void System::step() {
     }
 }
 void System::enforceBoundaries(Disk & disk) {
+    // prevent disks from moving outside the box
         if (disk.x < 0) disk.x = 0;
         if (disk.x > boxSize) disk.x = boxSize;
         if (disk.y < 0) disk.y = 0;
         if (disk.y > boxSize) disk.y = boxSize;
     }
 
+double System::uniform(double min, double max) {
+    // return a uniform number to move the disk to simulate Brownian motion 
+    return min + (max - min) * dist(gen);
+}
 // HINT: PROVIDE A DEFINITION FOR A MEMBER FUNCTION OF THE SYSTEM CLASS CALLED uniform
 
 void System::save(const std::string &filename){
