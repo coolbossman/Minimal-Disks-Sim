@@ -11,13 +11,13 @@
  */
 int main() {
     // number of disks
-    int N = 20;
+    int N = 25;
     double maxDisplacement  = 0.6;
-    double dt = 0.5;
+    double diskRadius = 0.3;
     double L = 20.0;
 
     // initialise the system
-    System system(N, maxDisplacement,dt,L,1234);
+    System system(N, maxDisplacement,diskRadius,L,1234);
 
     // total number of iterations
     int iterations = N*500;

@@ -20,10 +20,10 @@ System::System(int N, double displacement,double radius, double boxSize, int see
 
         for (int i = 0; i < nSide && disks.size() < N; ++i) {
             for (int j = 0; j < nSide && disks.size() < N; ++j) {
-                disks.push_back(Disk(i * 2*radius, j * 2*radius, radius));
-            }
+                disks.push_back(Disk(i * 4*radius, j * 4*radius, radius));
         }
     }   
+}
 
 bool System::overlap(int i){
     for (int j = 0; j < disks.size(); ++j) {
@@ -45,13 +45,21 @@ void System::step() {
         double dy = uniform(-displacement, displacement);
         this->disks[selected_disk].move(dx, dy);
         
+        
         enforceBoundaries(disks[selected_disk]);
 
         if (overlap(selected_disk)){
             disks[selected_disk].x = oldx;
             disks[selected_disk].y = oldy;
         }
-       
+
+        // isolating teleporting bug to code or visualisation
+        if (overlap(selected_disk) || ...) {
+        std::cout << "Disk " << selected_disk << " reverted from (" 
+                << disks[selected_disk].x << "," << disks[selected_disk].y << ")\n";
+        disks[selected_disk].x = oldx;
+        disks[selected_disk].y = oldy;
+        }
     }
 }
 void System::enforceBoundaries(Disk & disk) {
