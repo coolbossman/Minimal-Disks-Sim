@@ -14,7 +14,9 @@ This was first done for the `system` class in the branch `*system-fix*`, then fo
 
 However, the codebase failed to produce the expected results; visualising the outputs showed the disks teleporting around, much faster than they should be able to, along with the disks clipping into the walls. 
 
-Both issues involved the distance checks working off of the disks' centre and not including their radius, but the teleporting was also due to python reading in lexographic order (0, 1, 10, 100 etc) instead of numerical (0, 1, 2 etc) and so was displaying frames out of order.
+Both issues involved the distance checks working off of the disks' centre and not including their radius, but the teleporting was also due to python reading in lexographic order (0, 1, 10, 100 etc) instead of numerical (0, 1, 2 etc) and so was displaying frames out of order. 
+
+All of these discoveries were completed within the `main-test` branch, which, upon verification that functionality had been restored, would be merged back into `main`.
 
 
 
@@ -31,6 +33,10 @@ compiled and ran, disks were teleporting, altered parameters slightly, bug remai
 
 
 debugging code showed a code issue, visual inspection showed a doubled radius check. boundary radius checks were added to prevent clipping around the edges. teleporting remained.
+
+
+
+bug identified as mismatch between numerical/lexographical order, fixed with equal length filenames. project deemed functional.
 
 
 

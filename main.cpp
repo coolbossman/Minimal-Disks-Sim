@@ -28,7 +28,9 @@ int main() {
         // move one disk
         system.step();
         // save a configuration
-        system.save("confs/conf"+std::to_string(i));
+        std::ostringstream fname;
+        fname << "confs/conf" << std::setw(5) << std::setfill('0') << i;
+        system.save(fname.str());
     }
     return 0;
 }
