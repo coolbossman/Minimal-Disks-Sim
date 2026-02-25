@@ -20,6 +20,5 @@ double Disk::distance(Disk& other){
     double edge_distance = center_distance - (this->radius + other.radius);
 
     return edge_distance;
-    // HINT: COMPLETE THE CALCULATION OF THE DISTANCE BETWEEN this DISK AND THE DISK other
 
 }

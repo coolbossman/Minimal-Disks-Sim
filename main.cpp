@@ -6,7 +6,6 @@
 #include <iomanip>
 #include <chrono>
 #include "system.h"
-// HINT: COMPLETE THE INCLUDE STATEMENT
 
 
 /**

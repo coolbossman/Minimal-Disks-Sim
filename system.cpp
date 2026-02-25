@@ -1,7 +1,6 @@
 #include <fstream>
 #include "system.h"
 #include "disk.h"
-//HINT: COMPLETE THE INCLUDE STATEMENT
 
 System::System(int N, double displacement,double radius, double boxSize, int seed) {
 /** 
@@ -70,7 +69,6 @@ double System::uniform(double min, double max) {
     // return a uniform number to move the disk to simulate Brownian motion 
     return min + (max - min) * dist(gen);
 }
-// HINT: PROVIDE A DEFINITION FOR A MEMBER FUNCTION OF THE SYSTEM CLASS CALLED uniform
 
 void System::save(const std::string &filename){
     // save state of disks to file
