@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <fstream>
 #include <iomanip>
 #include "system.h"
 // HINT: COMPLETE THE INCLUDE STATEMENT
@@ -32,5 +33,14 @@ int main() {
         fname << "confs/conf" << std::setw(5) << std::setfill('0') << i;
         system.save(fname.str());
     }
+
+    // Save system parameters to a file
+    std::ofstream paramFile("params");
+    paramFile << "N=" << N << "\n";
+    paramFile << "maxDisplacement=" << maxDisplacement << "\n";
+    paramFile << "diskRadius=" << diskRadius << "\n";
+    paramFile << "L=" << L << "\n";
+    paramFile.close();
+
     return 0;
 }

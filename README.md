@@ -20,23 +20,23 @@ All of these discoveries were completed within the `main-test` branch, which, up
 
 
 
+With the functionality restored, focus then moved to additions and stress-testing.
+
+
+
+
+
 re-referenced system.h in main.cpp; system.cpp, readded missing member function from system.cpp, recreated system.h from the ref. manual, improved documentation in these files, updated progress in README.md
-
-
 
 readded missing member function from disk.cpp, recreated disk.h from the ref. manual, improved documentation in these files.
 
-
-
 compiled and ran, disks were teleporting, altered parameters slightly, bug remained, added debugging code to isolate bug to code or visualisation, tweaked .gitignore to include .out/.o files, updated progress in README.md
-
-
 
 debugging code showed a code issue, visual inspection showed a doubled radius check. boundary radius checks were added to prevent clipping around the edges. teleporting remained.
 
-
-
 bug identified as mismatch between numerical/lexographical order, fixed with equal length filenames. project deemed functional.
+
+visualisation changes: animation spruced up, legend; title added, data preloaded.
 
 
 
