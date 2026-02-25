@@ -52,8 +52,6 @@ void System::step() {
         if (overlap(selected_disk)){
             disks[selected_disk].x = oldx;
             disks[selected_disk].y = oldy;
-            std::cout << "Disk " << selected_disk << " reverted from (" 
-                << disks[selected_disk].x << "," << disks[selected_disk].y << ")\n";
         disks[selected_disk].x = oldx;
         disks[selected_disk].y = oldy;
         }

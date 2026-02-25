@@ -20,10 +20,11 @@ All of these discoveries were completed within the `main-test` branch, which, up
 
 
 
-With the functionality restored, focus then moved to additions and stress-testing.
+With the functionality restored, focus then moved to additions and stress-testing, on the branch `additions`.
 
+The appearance of the simulation was changed to stand out more, axis labels, a frame counter and a legend of the chosen parameters were added.
 
-
+Further additional features added include command line arguments for adjusting the parameters on the fly, along with the clearing of the confs folder each time to facilitate this, a clock to track execution time, simple error checking for said adjustable parameters.
 
 
 re-referenced system.h in main.cpp; system.cpp, readded missing member function from system.cpp, recreated system.h from the ref. manual, improved documentation in these files, updated progress in README.md
@@ -36,7 +37,9 @@ debugging code showed a code issue, visual inspection showed a doubled radius ch
 
 bug identified as mismatch between numerical/lexographical order, fixed with equal length filenames. project deemed functional.
 
-visualisation changes: animation spruced up, legend; title added, data preloaded.
+visualisation changes: animation spruced up, legend; title added, animation saves to file.
+
+added CLI arguments, clock, error checking, clearing confs folder, switched to np arrays, modularised figure, removed debugging code
 
 
 

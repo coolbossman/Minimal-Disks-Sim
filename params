@@ -1,4 +1,4 @@
-N=20
-maxDisplacement=0.4
-diskRadius=0.5
-L=20
+N=100
+maxDisplacement=0.5
+diskRadius=1
+L=1000
