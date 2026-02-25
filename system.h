@@ -10,6 +10,9 @@
 #include "disk.h"
 
 class System {
+    /*
+    A simple class containing the system's parameters.
+    */
 public:
 
     std::vector<Disk> disks;
